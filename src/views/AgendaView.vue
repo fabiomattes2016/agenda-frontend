@@ -22,7 +22,7 @@ export default {
     <HeaderCalendar />
   </div>
   <main>
-    <div class="container">
+    <div class="container cards">
       <CardEmpty />
       <CardEvent />
       <CardEvent />
@@ -31,7 +31,7 @@ export default {
 </template>
 
 <style>
-.container {
-  width: 50%;
+.cards {
+  width: 40% !important;
 }
 </style>
