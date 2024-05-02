@@ -13,22 +13,7 @@ export default {
       dataAtual: dataAtual
     }
   },
-  methods: {
-    nextMonth() {
-      let dataAtual = new Date()
-
-      dataAtual = dataAtual.setDate(dataAtual.getMonth() + 1)
-
-      let monthNameLong = dataAtual.toLocaleString('pt-BR', { month: 'long' })
-
-      let ano = dataAtual.getFullYear()
-      let dataFormatada = `${monthNameLong} de ${ano}`
-
-      console.log(dataAtual.getMonth() + 1)
-
-      return dataAtual
-    }
-  }
+  methods: {}
 }
 </script>
 
@@ -41,7 +26,7 @@ export default {
       <button class="btn btn-default">
         <i class="fa-solid fa-chevron-left"></i>
       </button>
-      <button class="btn btn-default" @click="nextMonth()">
+      <button class="btn btn-default">
         <i class="fa-solid fa-chevron-right"></i>
       </button>
       <button class="btn btn-default date">
@@ -53,9 +38,8 @@ export default {
       <div class="float-end view">
         <select class="form-select" aria-label="Select view">
           <option value="1">Dia</option>
-          <option value="2">Semana de Trabalho</option>
-          <option value="3">Semana</option>
-          <option value="4">Agenda</option>
+          <option value="2">Semana</option>
+          <option value="3" selected>Agenda</option>
         </select>
       </div>
     </div>
@@ -64,10 +48,11 @@ export default {
 
 <style>
 .calendar-header {
+  border-top: 1px solid rgb(219, 219, 219);
+  border-bottom: 1px solid rgb(219, 219, 219);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 70px;
   padding: 10px;
   background-color: #f8f9fa;
 }

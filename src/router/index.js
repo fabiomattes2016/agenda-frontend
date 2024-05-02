@@ -1,13 +1,19 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import AgendaView from '../views/AgendaView.vue'
+import NewLocal from '../views/NewLocal.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: HomeView
+      name: 'agenda',
+      component: AgendaView
+    },
+    {
+      path: '/new-local',
+      name: 'new-local',
+      component: NewLocal
     }
   ]
 })

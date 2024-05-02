@@ -1,14 +1,16 @@
 <script></script>
 
 <template>
-  <nav class="navbar navbar-light bg-light fixed-top">
+  <nav class="navbar navbar-light bg-light">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
         <i class="fa-solid fa-calendar-days icon"></i>
         Agenda de Compromissos
       </a>
       <div class="buttons">
-        <a href="#" class="btn btn-success"><i class="fa-solid fa-plus"></i> Novo local</a>
+        <router-link to="/new-local" class="btn btn-success"
+          ><i class="fa-solid fa-plus"></i> Novo local</router-link
+        >
         <a href="#" class="btn btn-success"><i class="fa-solid fa-plus"></i> Novo evento</a>
       </div>
     </div>
