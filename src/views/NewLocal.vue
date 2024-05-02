@@ -5,23 +5,71 @@ import 'datatables.net-dt/js/dataTables.dataTables'
 import 'datatables.net-dt/css/dataTables.dataTables.min.css'
 import $ from 'jquery'
 
+import { useQuery } from 'villus'
+
 import NavBarNewLocal from '../components/NavBarNewLocal.vue'
 import HeaderNewLocal from '../components/HeaderNewLocal.vue'
 import FormNewLocal from '../components/forms/FormNewLocal.vue'
 
 export default {
+  methods: {
+    getLocais() {
+      const locais = `
+        query {
+            listLocais {
+                id
+                codCooperativa
+                codAgencia
+                nome
+                endereco
+                numero
+                bairro
+                cidade
+                estado
+                lat
+                long
+                ativa
+                salas {
+                    id
+                    nome
+                    descricao
+                }
+            }
+        }
+        `
+
+      const { data } = useQuery({
+        query: locais
+      })
+
+      this.locais = data
+
+      setTimeout(() => {
+        console.log('pausa')
+
+        $('#locais').DataTable({
+          language: {
+            url: 'https://cdn.datatables.net/plug-ins/1.10.21/i18n/Portuguese-Brasil.json'
+          }
+        })
+      }, 300)
+    }
+  },
+  created() {
+    this.getLocais()
+  },
+  setup() {},
   components: {
     NavBarNewLocal,
     HeaderNewLocal,
     FormNewLocal
   },
-  mounted() {
-    $('#locais').DataTable({
-      language: {
-        url: 'https://cdn.datatables.net/plug-ins/1.10.21/i18n/Portuguese-Brasil.json'
-      }
-    })
-  }
+  data() {
+    return {
+      locais: []
+    }
+  },
+  mounted() {}
 }
 </script>
 
@@ -56,13 +104,13 @@ export default {
                   <th></th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <td>0001</td>
-                  <td>01</td>
-                  <td>Agência 0001-01</td>
-                  <td>Jandaia do Sul</td>
-                  <td>PR</td>
+              <tbody v-if="locais">
+                <tr v-for="local in locais.listLocais" v-bind:key="local.id">
+                  <td>{{ local.codCooperativa }}</td>
+                  <td>{{ local.codAgencia }}</td>
+                  <td>{{ local.nome }}</td>
+                  <td>{{ local.cidade }}</td>
+                  <td>{{ local.estado }}</td>
                   <td>
                     <button class="btn btn-sm btn-danger">
                       <i class="fa-regular fa-trash-can"></i>

@@ -22,7 +22,7 @@ export default {
     <div class="col-3">
       <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#frmSalas">
         <i class="fa-solid fa-door-closed"></i>
-        Cadastrar Salas
+        Salas
       </button>
     </div>
 

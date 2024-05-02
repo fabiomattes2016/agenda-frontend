@@ -9,7 +9,7 @@
       </a>
       <div class="buttons">
         <router-link to="/new-local" class="btn btn-success"
-          ><i class="fa-solid fa-plus"></i> Novo local</router-link
+          ><i class="fa-regular fa-building"></i> Locais</router-link
         >
         <a href="#" class="btn btn-success"><i class="fa-solid fa-plus"></i> Novo evento</a>
       </div>
